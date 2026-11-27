@@ -1,0 +1,155 @@
+{
+  "model_version": "20261030151526",
+  "txn": {
+    "features": [
+      "amount_log",
+      "is_transfer",
+      "hour",
+      "is_night",
+      "amt_to_balance",
+      "drains_account",
+      "orig_balance_log",
+      "orig_balance_zero",
+      "dest_balance_zero",
+      "dest_balance_log"
+    ],
+    "threshold": 0.46545613134137565,
+    "stats": {
+      "amount_log": {
+        "importance": 0.0336,
+        "median_pos": 11.802281086257628,
+        "median_neg": 11.391352343326142
+      },
+      "is_transfer": {
+        "importance": 0.0749,
+        "median_pos": 0.5,
+        "median_neg": 0.0
+      },
+      "hour": {
+        "importance": 0.048,
+        "median_pos": 11.0,
+        "median_neg": 13.0
+      },
+      "is_night": {
+        "importance": 0.0261,
+        "median_pos": 0.0,
+        "median_neg": 0.0
+      },
+      "amt_to_balance": {
+        "importance": 0.3845,
+        "median_pos": 0.9999866197288816,
+        "median_neg": 0.5773986322064943
+      },
+      "drains_account": {
+        "importance": 0.2249,
+        "median_pos": 1.0,
+        "median_neg": 0.0
+      },
+      "orig_balance_log": {
+        "importance": 0.0802,
+        "median_pos": 11.844396973838808,
+        "median_neg": 11.847051446331331
+      },
+      "orig_balance_zero": {
+        "importance": 0.0159,
+        "median_pos": 0.0,
+        "median_neg": 0.0
+      },
+      "dest_balance_zero": {
+        "importance": 0.0181,
+        "median_pos": 0.0,
+        "median_neg": 0.0
+      },
+      "dest_balance_log": {
+        "importance": 0.0938,
+        "median_pos": 8.580744221636436,
+        "median_neg": 10.817272445666404
+      }
+    },
+    "source": "synthetic PaySim-schema data (real file not found)"
+  },
+  "mule": {
+    "features": [
+      "fan_in",
+      "fan_out",
+      "in_count",
+      "out_count",
+      "in_amount_log",
+      "out_amount_log",
+      "pass_through",
+      "min_hold_minutes",
+      "upstream_depth",
+      "new_counterparty_share"
+    ],
+    "threshold": 0.2551671309277599,
+    "stats": {
+      "fan_in": {
+        "importance": 0.0832,
+        "median_pos": 2.0,
+        "median_neg": 1.0
+      },
+      "fan_out": {
+        "importance": 0.0202,
+        "median_pos": 2.0,
+        "median_neg": 1.0
+      },
+      "in_count": {
+        "importance": 0.0784,
+        "median_pos": 2.0,
+        "median_neg": 1.0
+      },
+      "out_count": {
+        "importance": 0.0197,
+        "median_pos": 2.0,
+        "median_neg": 1.0
+      },
+      "in_amount_log": {
+        "importance": 0.3549,
+        "median_pos": 9.382081991423057,
+        "median_neg": 6.546943217533631
+      },
+      "out_amount_log": {
+        "importance": 0.2483,
+        "median_pos": 8.559970514340161,
+        "median_neg": 6.258155974303847
+      },
+      "pass_through": {
+        "importance": 0.0502,
+        "median_pos": 0.6921905199338834,
+        "median_neg": 0.2534625591110314
+      },
+      "min_hold_minutes": {
+        "importance": 0.0845,
+        "median_pos": 72.5,
+        "median_neg": 1131.0
+      },
+      "upstream_depth": {
+        "importance": 0.0166,
+        "median_pos": 3.0,
+        "median_neg": 2.0
+      },
+      "new_counterparty_share": {
+        "importance": 0.0441,
+        "median_pos": 1.0,
+        "median_neg": 1.0
+      }
+    },
+    "source": "synthetic IBM-AML-schema data with injected typologies (real file not found)"
+  },
+  "iforest": {
+    "features": [
+      "fan_in",
+      "fan_out",
+      "in_count",
+      "out_count",
+      "in_amount_log",
+      "out_amount_log",
+      "pass_through",
+      "min_hold_minutes",
+      "upstream_depth",
+      "new_counterparty_share"
+    ],
+    "p50": 0.46236603582125013,
+    "p99": 0.6557379866552862
+  }
+}

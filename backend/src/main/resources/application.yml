@@ -1,0 +1,47 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: fraudshield-backend
+  datasource:
+    url: ${DB_URL:jdbc:mysql://localhost:3306/fraudshield?serverTimezone=UTC&useSSL=false&allowPublicKeyRetrieval=true}
+    username: ${DB_USER:fraudshield}
+    password: ${DB_PASSWORD:fraudshield_dev}
+  sql:
+    init:
+      mode: always
+      platform: mysql
+  jpa:
+    hibernate:
+      ddl-auto: none
+    open-in-view: false
+    properties:
+      hibernate.jdbc.time_zone: UTC
+  jackson:
+    serialization:
+      write-dates-as-timestamps: false
+
+fraudshield:
+  ml:
+    base-url: ${ML_URL:http://localhost:8000}
+    timeout-ms: 3000
+    history-hours: 48
+  risk:
+    # final = w_txn*txn + w_mule*mule + w_anomaly*anomaly + w_rules*rules
+    weight-txn: 0.30
+    weight-mule: 0.30
+    weight-anomaly: 0.10
+    weight-rules: 0.30
+    mfa-threshold: 0.30
+    hold-threshold: 0.55
+    block-threshold: 0.80
+  otp:
+    ttl-seconds: 300
+    max-attempts: 3
+    # Prototype only: the OTP is returned in the API response instead of sent by SMS.
+    demo-mode: true
+  hold:
+    expiry-hours: 24
+  seed-demo-data: true
+  cors-origins: http://localhost:5173,http://127.0.0.1:5173

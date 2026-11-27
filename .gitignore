@@ -1,0 +1,7 @@
+node_modules/
+frontend/dist/
+backend/target/
+__pycache__/
+.pytest_cache/
+ml-service/data/raw/*.csv
+*.log

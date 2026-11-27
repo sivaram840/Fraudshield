@@ -1,0 +1,177 @@
+{
+  "run_at": "2026-11-26T12:35:56",
+  "passed": 34,
+  "total": 34,
+  "results": [
+    {
+      "test": "Security: API refuses requests without sign-in",
+      "passed": true,
+      "detail": "status=401"
+    },
+    {
+      "test": "Security: wrong password refused",
+      "passed": true,
+      "detail": "status=401"
+    },
+    {
+      "test": "Stack: backend reachable, MySQL seeded, ML online",
+      "passed": true,
+      "detail": "accounts=40 mlOnline=True"
+    },
+    {
+      "test": "Stack: backend proxies ML model metrics",
+      "passed": true,
+      "detail": "model version 20261030151526"
+    },
+    {
+      "test": "Stack: React dev server proxies /api to backend",
+      "passed": true,
+      "detail": "http://127.0.0.1:5173/api/dashboard -> 200"
+    },
+    {
+      "test": "Normal transfer is allowed and executed",
+      "passed": true,
+      "detail": "decision=ALLOW status=COMPLETED score=0.0097 mlAvailable=True"
+    },
+    {
+      "test": "Balances updated consistently",
+      "passed": true,
+      "detail": "A=48500.0 B=2500.0"
+    },
+    {
+      "test": "Duplicate request returns original, charges once",
+      "passed": true,
+      "detail": "first=201 second=200 replay-header=true balanceA=47800.0"
+    },
+    {
+      "test": "Same key with different payload is rejected",
+      "passed": true,
+      "detail": "status=409 code=IDEMPOTENCY_KEY_REUSED"
+    },
+    {
+      "test": "Insufficient funds refused",
+      "passed": true,
+      "detail": "status=422"
+    },
+    {
+      "test": "Self-transfer refused",
+      "passed": true,
+      "detail": "status=400 code=SAME_ACCOUNT"
+    },
+    {
+      "test": "Transfer to frozen account is BLOCKED",
+      "passed": true,
+      "detail": "decision=BLOCK status=BLOCKED"
+    },
+    {
+      "test": "Blocked transaction can never execute",
+      "passed": true,
+      "detail": "approve attempt -> 409, balance unchanged=True"
+    },
+    {
+      "test": "Setup inflow completes (with MFA if requested)",
+      "passed": true,
+      "detail": "decision=MFA status=COMPLETED"
+    },
+    {
+      "test": "Rapid onward transfer is held or blocked",
+      "passed": true,
+      "detail": "decision=HOLD status=HELD rules=['RAPID_ONWARD', 'NEW_ACCOUNT_PASS_THROUGH', 'DRAINS_ACCOUNT', 'NEW_PAYEE_LARGE']"
+    },
+    {
+      "test": "Unresolved hold does not execute",
+      "passed": true,
+      "detail": "dest balance=0.0"
+    },
+    {
+      "test": "Analyst reject keeps money in place",
+      "passed": true,
+      "detail": "status=REJECTED"
+    },
+    {
+      "test": "Failed MFA x3 rejects the transfer",
+      "passed": true,
+      "detail": "remaining=[2, 1, 0] final=REJECTED"
+    },
+    {
+      "test": "Correct OTP executes the transfer",
+      "passed": true,
+      "detail": "status=COMPLETED"
+    },
+    {
+      "test": "Scenario: mule fan-in onward transfer is stopped",
+      "passed": true,
+      "detail": "Rs 724054.82 reached the intermediary, but the onward transfer was BLOCKED, so the money stays in a traceable account. The intermediary was warned and flagged as a likely unwitting mule; the trace lists every victim for refunds. [MFA/COMPLETED@0.1683; MFA/COMPLETED@0.082; MFA/COMPLETED@0.2806; MFA/COMPLETED@0.3334; MFA/COMPLETED@0.3938; BLOCK/BLOCKED@0.5518]"
+    },
+    {
+      "test": "Graph trace: intermediary classified, sources listed",
+      "passed": true,
+      "detail": "role=LIKELY_UNWITTING_MULE upstream=5 :: FS8852973351 received Rs 724054.82 from 5 account(s); Rs 0 moved on, Rs 687852.08 was stopped (blocked/held). 0 downstream endpoint(s) identified for investigators."
+    },
+    {
+      "test": "Explained alerts raised incl. mule warning to intermediary",
+      "passed": true,
+      "detail": "types=['FAN_IN', 'HIGH_RISK_TRANSACTION', 'MULE_WARNING', 'RAPID_ONWARD_TRANSFER']"
+    },
+    {
+      "test": "Money-flow graph returns accounts, directions, amounts, timestamps",
+      "passed": true,
+      "detail": "nodes=7 edges=6"
+    },
+    {
+      "test": "Scenario: multi-stage layering chain is interrupted",
+      "passed": true,
+      "detail": "Chain stopped at hop 2 (HELD): the layering was interrupted. [MFA/COMPLETED@0.0788; HOLD/HELD@0.4751]"
+    },
+    {
+      "test": "Scenario: normal customer activity passes",
+      "passed": true,
+      "detail": "3 of 3 ordinary transfers completed without friction. [ALLOW/COMPLETED@0.054; ALLOW/COMPLETED@0.0573; ALLOW/COMPLETED@0.1721]"
+    },
+    {
+      "test": "Portals: each role limited to its own functions",
+      "passed": true,
+      "detail": "customer sees own account; customer->accounts 403, investigator->review 403, analyst->admin 403"
+    },
+    {
+      "test": "Customer portal: send money from own account",
+      "passed": true,
+      "detail": "status=COMPLETED text='Sent' balance 150097.0 -> 149597.0"
+    },
+    {
+      "test": "Customer portal: no model internals exposed",
+      "passed": true,
+      "detail": "customer response has plain status only"
+    },
+    {
+      "test": "Customer portal: intermediary sees the mule-scam warning",
+      "passed": true,
+      "detail": "ravi-16df3a: warnings=['MULE_WARNING'] status=UNDER_REVIEW"
+    },
+    {
+      "test": "Customer self-report becomes an investigator case",
+      "passed": true,
+      "detail": "CASE-D3D8B4 visible to investigator=True"
+    },
+    {
+      "test": "Analyst escalates the mule account to investigators",
+      "passed": true,
+      "detail": "CASE-CE3201 by analyst"
+    },
+    {
+      "test": "Investigator case file: role, victims, alerts, trail",
+      "passed": true,
+      "detail": "role=LIKELY_UNWITTING_MULE victims=5 alerts=8"
+    },
+    {
+      "test": "Investigator updates case status and findings",
+      "passed": true,
+      "detail": "status=IN_PROGRESS"
+    },
+    {
+      "test": "Audit log records requests, decisions, executions, duplicates, alerts",
+      "passed": true,
+      "detail": "missing=[]"
+    }
+  ]
+}
